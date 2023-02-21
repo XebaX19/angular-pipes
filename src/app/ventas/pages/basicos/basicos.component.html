@@ -1,0 +1,84 @@
+<div class="text-layout">
+    <h1>Pipes básicos</h1>
+    <p>
+        Pipes incluídos en Angular - Usualmente en el "CommonModule"
+    </p>
+</div>
+
+<div class="grid">
+    <!-- La pantalla tiene 12 columnas:
+        Si defino un área de 6 columnas ocuparía aprox la mitad de la pantalla
+        Si defino un área de 4 columnas ocuparía aprox un tercio de la pantalla... -->
+    <div class="col-4">
+        <p-card header="uppercase"
+                subheader="Original: {{ nombreLower }}">
+            {{ nombreLower | uppercase }}
+        </p-card>
+    </div>
+    <div class="col-4">
+        <p-card header="lowercase"
+                subheader="Original: {{ nombreUpper }}">
+            {{ nombreUpper | lowercase }}
+        </p-card>
+    </div>
+    <div class="col-4">
+        <p-card header="titlecase"
+                subheader="Original: {{ nombreCompleto }}">
+            {{ nombreCompleto | titlecase }}
+        </p-card>
+    </div>
+</div>
+
+<div class="text-layout">
+    <h1>Date | Fecha | Pipe</h1>
+    <p>
+        Pipe para mostrar fechas
+    </p>
+</div>
+<div class="grid">
+    <div class="col-6">
+        <p-card>
+            <ul>
+                <li>fecha</li>
+                <li>fecha | date</li>
+                <li>fecha | date:'short'</li>
+                <li>fecha | date:'long'</li>
+                <li>fecha | date:'MMMM'</li>
+                <li>fecha | date:'MMMM dd, yyyy'</li>
+                <li>fecha | date:'dd/MM/yyyy hh:mm'</li>
+            </ul>
+            <hr>
+            <ul>
+                <li>fecha | date:'long':'GMT-6'</li>
+                <li>fecha | date:'long':'GMT+0'</li>
+                <li>fecha | date:'long':'':'en'</li>
+                <li>fecha | date:'long':'GMT+0':'en'</li>
+                <li>fecha | date:'long':'':'fr'</li>
+                <li>fecha | date:'long':'':'es-AR'</li>
+            </ul>
+        </p-card>
+    </div>
+    <div class="col-6">
+        <p-card>
+            <ul>
+                <li>{{ fecha }}</li>
+                <li>{{ fecha | date }}</li>
+                <li>{{ fecha | date:'short' }}</li>
+                <li>{{ fecha | date:'long' }}</li>
+                <li>{{ fecha | date:'MMMM' }}</li>
+                <li>{{ fecha | date:'MMMM dd, yyyy' }}</li>
+                <li>{{ fecha | date:'dd/MM/yyyy HH:mm' }}</li>
+            </ul>
+            <hr>
+            <ul>
+                <li>{{ fecha | date:'long':'GMT-6' }}</li>
+                <li>{{ fecha | date:'long':'GMT+0' }}</li>
+                <li>{{ fecha | date:'long':'':'en' }}</li>
+                <li>{{ fecha | date:'long':'GMT+0':'en' }}</li>
+                <!-- El inglés (en) viene por defecto, pero para registrar otros idiomas lo debo agregar en el "app.module.ts" (ver este archivo) -->
+                <li>{{ fecha | date:'long':'':'fr' }}</li>
+                <li>{{ fecha | date:'long':'':'es-AR' }}</li>
+            </ul>
+        </p-card>
+    </div>
+</div>

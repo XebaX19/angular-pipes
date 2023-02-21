@@ -1,0 +1,82 @@
+<div class="text-layout">
+    <h1>Pipes no tan comunes</h1>
+    <p>
+        Pipes incluídos en Angular - Usualmente en el "CommonModule"
+    </p>
+</div>
+
+<div class="grid">
+    <div class="col md:col-6">
+        <!-- Para usar el p-fieldset necesito importar el "BrowserAnimationsModule" en "app.module.ts" -->
+        <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+            <p>
+                <!-- Para que se vea el efecto de splash cuando toco el desplegable, tengo que configurar "primeNgConfig" en el "app.component.ts" -->
+                Saludos {{ nombre }}, es un placer
+                <!-- i18nSelect: busca entre una serie de opciones y selecciona la que conicida con el parámetro a validar -->
+                {{ genero | i18nSelect:invitacionMap}}
+                a nuestro evento.
+            </p>
+            <button pButton label="Cambiar persona" (click)="cambiarPersona()" class="p-button-help"></button>
+        </p-fieldset>
+    </div>
+    
+    <div class="col md:col-6">
+        <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+            <p>
+                Actualmente {{ clientes.length | i18nPlural:clientesMap }}
+            </p>
+            <!-- Otra forma de armar un boton con PrimeNG: -->
+            <p-button label="Borrar cliente" (onClick)="borrarCliente()" class="p-button-danger"></p-button>
+            <!-- <button pButton label="Borrar cliente" (click)="borrarCliente()" class="p-button-danger"></button> -->
+        </p-fieldset>
+    </div>
+    
+    <div class="col md:col-6">
+        <p-fieldset legend="Slice Pipe" [toggleable]="true">
+            <b>Original</b>
+            <pre>{{ clientes }}</pre>
+
+            <b>slice:0:2 con objeto</b>
+            <pre>{{ clientes | slice:0:2 }}</pre>
+
+            <b>slice:1:2</b>
+            <pre>{{ clientes | slice:1:2 }}</pre>
+
+            <b>slice:3:3</b>
+            <pre>{{ clientes | slice:3:3 }}</pre>
+
+            <b>slice:5:9 con string</b>
+            <pre>{{ 'sebastián' | slice:5:9 }}</pre>
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="Json Pipe" [toggleable]="true">
+            <pre>{{ heroes | json }}</pre>
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+            <ul>
+                <li *ngFor="let prop of persona | keyvalue">
+                    <b>{{ prop.key | titlecase }}</b>: {{ prop.value }}
+                </li>
+            </ul>
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="Async Pipe" [toggleable]="true">
+            <!-- Con Observable: -->
+            <!-- El Pipe "async" solo se puede usar con un Observable o una Promesa
+            El pipe "async" se suscribe internamente al observable e imprime cada una de sus emisiones -->
+            <pre *ngIf="!(miObservable | async)">Resolviendo observable</pre>
+            <pre>{{ miObservable | async }}</pre>
+
+            <!-- Con Promesa: -->
+            <pre *ngIf="!(valorPromesa | async)">Resolviendo promesa</pre>
+            <pre>{{ valorPromesa | async }}</pre>
+        </p-fieldset>
+    </div>
+</div>
